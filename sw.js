@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dpex-shell-v4';
+const CACHE_NAME = 'dpex-shell-v5';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -6,7 +6,12 @@ const ASSETS_TO_CACHE = [
   './favicon.png',
   './icon-192.png',
   './icon-512.png',
-  './logo.png'
+  './logo.png',
+  './fonts/Poppins-Regular.woff2',
+  './fonts/Poppins-Medium.woff2',
+  './fonts/Poppins-SemiBold.woff2',
+  './fonts/Poppins-Bold.woff2',
+  './fonts/Poppins-Light.woff2'
 ];
 
 // Install Event: App-Shell cachen
