@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dPex | Inoffizieller Monster Katalog</title>
+    <link rel="icon" type="image/png" href="/dPex/favicon.png">
+    <link rel="apple-touch-icon" href="/dPex/favicon.png">
+    <link rel="manifest" href="/dPex/manifest.json" crossorigin="anonymous">
+    <meta name="theme-color" content="#111827">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="dPex">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827;
+            color: #f3f4f6;
+        }
+
+        /* Diese Klasse versteckt Elemente auf dem Bildschirm */
+        .no-print {
+            display: block;
+        }
+        
+        /* Moderne, dezente Scrollleiste */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(156, 163, 175, 0.4);
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(250, 204, 21, 0.7);
+        }
+        /* Firefox Support */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(156, 163, 175, 0.4) transparent;
+        }
+
+        /* Hilfsklasse für den 3D-Flipping-Effekt */
+        .preserve-3d {
+            transform-style: preserve-3d;
+        }
+
+        /* Dieser Bereich ist nur für den Druck gedacht */
+        @media print {
+            body {
+                background-color: #ffffff;
+                color: #111827;
+                padding: 0;
+                margin: 0;
+                counter-reset: page;
+            }
+            .no-print {
+                display: none !important;
+            }
+
+            .pokedex-grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+                gap: 1rem !important;
+                padding: 1rem;
+                display: grid; /* Sicherstellen, dass die Karten als Grid behandelt werden */
+                align-content: center; /* Vertikale Zentrierung */
+            }
+
+            .pokemon-card {
+                border: 1px solid #d1d5db;
+                box-shadow: none;
+                break-inside: avoid;
+                margin-bottom: 2mm;
+            }
+
+            /* Seitenzahl und Generation in der Fußzeile */
+            @page {
+                @bottom-right {
+                    font-size: 0.875rem;
+                    color: #4a5568;
+                    content: "Seite " counter(page);
+                    padding-bottom: 2mm;
+                }
+            }
+
+            #print-footer-left {
+                position: fixed;
+                bottom: 2mm;
+                left: 1rem;
+                font-size: 0.875rem;
+                color: #4a5568;
+                display: block !important;
+            }
+
+            #print-footer-right {
+                position: fixed;
+                bottom: 2mm;
+                right: 1rem;
+                display: flex !important;
+                align-items: center;
+            }
+
+            #print-footer-right img {
+                height: 14mm;
+                width: auto;
+                object-fit: contain;
+            }
+        }
+    </style>
+
+<link rel="stylesheet" href="./index.css">
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/dPex/assets/index-BMXVKYQB.js"></script>
+</head>
+<body class="p-8">
+    <div id="root"></div>
+</body>
+</html>
