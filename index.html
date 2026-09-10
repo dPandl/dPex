@@ -126,6 +126,123 @@
             transform-origin: center center;
         }
 
+        /* Pokémon Kampf-Animationen (Klassisches Vorpreschen & Zurückfedern) */
+        @keyframes battle-attack-p1 {
+            0% { transform: translate(var(--p1-x, 0%), var(--p1-offset, 0%)) scale(1); }
+            35% { transform: translate(calc(var(--p1-x, 0%) + 42px), calc(var(--p1-offset, 0%) - 20px)) scale(1.08); }
+            70% { transform: translate(calc(var(--p1-x, 0%) + 50px), calc(var(--p1-offset, 0%) - 25px)) scale(1.08); }
+            100% { transform: translate(var(--p1-x, 0%), var(--p1-offset, 0%)) scale(1); }
+        }
+
+        @keyframes battle-attack-p2 {
+            0% { transform: translate(var(--p2-x, 0%), var(--p2-offset, 0%)) scale(1); }
+            35% { transform: translate(calc(var(--p2-x, 0%) - 42px), calc(var(--p2-offset, 0%) + 16px)) scale(1.08); }
+            70% { transform: translate(calc(var(--p2-x, 0%) - 50px), calc(var(--p2-offset, 0%) + 20px)) scale(1.08); }
+            100% { transform: translate(var(--p2-x, 0%), var(--p2-offset, 0%)) scale(1); }
+        }
+
+        @keyframes battle-hit-shake {
+            0%, 100% { transform: translate(var(--target-x, 0%), var(--target-offset, 0%)); opacity: 1; }
+            20% { transform: translate(calc(var(--target-x, 0%) - 12px), var(--target-offset, 0%)); opacity: 0.3; }
+            40% { transform: translate(calc(var(--target-x, 0%) + 12px), var(--target-offset, 0%)); opacity: 0.8; }
+            60% { transform: translate(calc(var(--target-x, 0%) - 8px), var(--target-offset, 0%)); opacity: 0.3; }
+            80% { transform: translate(calc(var(--target-x, 0%) + 8px), var(--target-offset, 0%)); opacity: 0.9; }
+        }
+
+        .animate-battle-attack-p1 {
+            animation: battle-attack-p1 0.45s ease-out forwards;
+        }
+
+        .animate-battle-attack-p2 {
+            animation: battle-attack-p2 0.45s ease-out forwards;
+        }
+
+        .animate-battle-hit {
+            animation: battle-hit-shake 0.4s ease-in-out forwards;
+        }
+
+        /* Status-Effekte: Buff (Härtner, Schwerttanz etc. - Leuchten & Pulsieren nach oben) */
+        @keyframes battle-buff-glow {
+            0% { transform: translate(var(--target-x, 0%), var(--target-offset, 0%)) scale(1); filter: brightness(1); }
+            30% { transform: translate(var(--target-x, 0%), calc(var(--target-offset, 0%) - 14px)) scale(1.06); filter: brightness(1.7) drop-shadow(0 -8px 16px #3b82f6); }
+            60% { transform: translate(var(--target-x, 0%), calc(var(--target-offset, 0%) - 6px)) scale(1.03); filter: brightness(1.9) drop-shadow(0 -12px 20px #60a5fa); }
+            100% { transform: translate(var(--target-x, 0%), var(--target-offset, 0%)) scale(1); filter: brightness(1); }
+        }
+
+        /* Status-Effekte: Debuff (Heuler, Silberblick etc. - Zittern & Dunkelwerden) */
+        @keyframes battle-debuff-shake {
+            0% { transform: translate(var(--target-x, 0%), var(--target-offset, 0%)); filter: brightness(1); }
+            25% { transform: translate(calc(var(--target-x, 0%) - 6px), calc(var(--target-offset, 0%) + 10px)); filter: brightness(0.6) drop-shadow(0 4px 8px #9333ea); }
+            50% { transform: translate(calc(var(--target-x, 0%) + 6px), calc(var(--target-offset, 0%) + 10px)); filter: brightness(0.5); }
+            75% { transform: translate(calc(var(--target-x, 0%) - 4px), calc(var(--target-offset, 0%) + 6px)); filter: brightness(0.7); }
+            100% { transform: translate(var(--target-x, 0%), var(--target-offset, 0%)); filter: brightness(1); }
+        }
+
+        /* Spezielle Elementar-Projektil-Effekte */
+        @keyframes battle-fire-flare {
+            0% { transform: translate(var(--target-x, 0%), var(--target-offset, 0%)); filter: brightness(1); }
+            35% { filter: brightness(2) drop-shadow(0 0 25px #f97316) drop-shadow(0 0 10px #ef4444); }
+            70% { filter: brightness(1.8) drop-shadow(0 0 35px #eab308); }
+            100% { transform: translate(var(--target-x, 0%), var(--target-offset, 0%)); filter: brightness(1); }
+        }
+
+        @keyframes battle-electric-flash {
+            0%, 100% { transform: translate(var(--target-x, 0%), var(--target-offset, 0%)); filter: brightness(1); }
+            20% { filter: brightness(2.5) drop-shadow(0 0 20px #facc15) invert(0.2); }
+            40% { filter: brightness(0.7); }
+            60% { filter: brightness(2.8) drop-shadow(0 0 30px #fde047); }
+            80% { filter: brightness(1.2); }
+        }
+
+        @keyframes battle-water-wave {
+            0% { transform: translate(var(--target-x, 0%), var(--target-offset, 0%)); }
+            25% { transform: translate(calc(var(--target-x, 0%) - 10px), calc(var(--target-offset, 0%) + 8px)); filter: drop-shadow(0 0 18px #38bdf8); }
+            50% { transform: translate(calc(var(--target-x, 0%) + 10px), calc(var(--target-offset, 0%) - 8px)); filter: drop-shadow(0 0 24px #0284c7); }
+            75% { transform: translate(calc(var(--target-x, 0%) - 6px), var(--target-offset, 0%)); }
+            100% { transform: translate(var(--target-x, 0%), var(--target-offset, 0%)); filter: none; }
+        }
+
+        .animate-battle-buff {
+            animation: battle-buff-glow 0.65s ease-out forwards;
+        }
+
+        .animate-battle-debuff {
+            animation: battle-debuff-shake 0.65s ease-in-out forwards;
+        }
+
+        .animate-battle-fire {
+            animation: battle-fire-flare 0.5s ease-out forwards;
+        }
+
+        .animate-battle-electric {
+            animation: battle-electric-flash 0.5s ease-in-out forwards;
+        }
+
+        .animate-battle-water {
+            animation: battle-water-wave 0.55s ease-in-out forwards;
+        }
+
+        /* Pokémon Ein- und Auswechsel-Animationen (Ball-Rückruf / Hineinwerfen) */
+        @keyframes battle-switch-shrink {
+            0% { transform: translate(var(--sw-x, 0%), var(--sw-y, 0%)) scale(1); opacity: 1; filter: brightness(1); }
+            50% { filter: brightness(2) drop-shadow(0 0 10px #ef4444); }
+            100% { transform: translate(var(--sw-x, 0%), var(--sw-y, 0%)) scale(0); opacity: 0; filter: brightness(3); }
+        }
+
+        @keyframes battle-switch-grow {
+            0% { transform: translate(var(--sw-x, 0%), var(--sw-y, 0%)) scale(0); opacity: 0; filter: brightness(3); }
+            50% { filter: brightness(2) drop-shadow(0 0 10px #60a5fa); }
+            100% { transform: translate(var(--sw-x, 0%), var(--sw-y, 0%)) scale(1); opacity: 1; filter: brightness(1); }
+        }
+
+        .animate-switch-shrink {
+            animation: battle-switch-shrink 0.5s ease-in forwards;
+        }
+
+        .animate-switch-grow {
+            animation: battle-switch-grow 0.55s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+        }
+
         /* Diese Klasse versteckt Elemente auf dem Bildschirm */
         .no-print {
             display: block;
@@ -271,7 +388,7 @@
   }
 }
 </script>
-  <script type="module" crossorigin src="/dPex/assets/index-TQi3nRqQ.js"></script>
+  <script type="module" crossorigin src="/dPex/assets/index-WS8oYTBI.js"></script>
 </head>
 <body class="p-8">
     <div id="root"></div>
