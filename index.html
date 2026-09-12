@@ -79,7 +79,8 @@
         }
 
         .pokemon-card {
-            will-change: transform;
+            content-visibility: auto;
+            contain-intrinsic-size: auto 256px;
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
             transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
@@ -87,6 +88,10 @@
                         color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
                         transform 0.2s ease, 
                         box-shadow 0.2s ease;
+        }
+
+        .pokemon-card:hover {
+            will-change: transform;
         }
 
         /* Physikalischer Feder-Bounce / Overshoot (normal -> super big -> normal -> big -> normal) */
@@ -243,6 +248,46 @@
             animation: battle-switch-grow 0.55s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
         }
 
+        /* Explizite Regeln für Mobiltelefone im Querformat / flache Bildschirme */
+        @media (max-height: 520px) and (orientation: landscape) {
+            .mobile-landscape-stage {
+                padding: 4px 10px !important;
+            }
+            .mobile-landscape-status {
+                transform: scale(0.72) skewX(-6deg) !important;
+                transform-origin: top left !important;
+                margin-bottom: -15px !important;
+            }
+            .mobile-landscape-status-p2 {
+                transform: scale(0.72) skewX(-6deg) !important;
+                transform-origin: bottom right !important;
+                margin-top: -15px !important;
+            }
+            .mobile-landscape-sprite-p2 {
+                width: 105px !important;
+                height: 105px !important;
+            }
+            .mobile-landscape-sprite-p1 {
+                width: 115px !important;
+                height: 115px !important;
+            }
+            .mobile-landscape-shadow-p2 {
+                width: 70px !important;
+                height: 11px !important;
+            }
+            .mobile-landscape-shadow-p1 {
+                width: 85px !important;
+                height: 13px !important;
+            }
+            .mobile-landscape-control-wrapper {
+                padding: 4px 8px !important;
+                max-height: 86px !important;
+            }
+            .mobile-landscape-control {
+                height: 72px !important;
+            }
+        }
+
         /* Diese Klasse versteckt Elemente auf dem Bildschirm */
         .no-print {
             display: block;
@@ -388,7 +433,7 @@
   }
 }
 </script>
-  <script type="module" crossorigin src="/dPex/assets/index-CizA4UJV.js"></script>
+  <script type="module" crossorigin src="/dPex/assets/index-Bb37M4Eo.js"></script>
 </head>
 <body class="p-8">
     <div id="root"></div>
